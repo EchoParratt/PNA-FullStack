@@ -5,6 +5,19 @@
   text-align: center;
 }
 
+h1 {
+  font-family: 'Roboto Mono', monospace;
+}
+
+input{
+  font-family: 'Roboto Mono', monospace;
+  padding-left: 30px;
+}
+
+#root button {
+  font-family: 'Roboto Mono', monospace;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -16,6 +29,21 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.image-container{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.image-container > div {
+  flex: 1;
+  text-align: center; /* Center text and images within each div */
+}
+
+.input-group {
+  margin-bottom: 20px;
 }
 
 @keyframes logo-spin {

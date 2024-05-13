@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './App.css';
+
 
 function App() {
   const [homeTeam, setHomeTeam] = useState('');
@@ -23,7 +25,8 @@ function App() {
 
   return (
     <div>
-      <h1>Football Pass Maps</h1>
+      <h1>2022 World Cup Pass Networks</h1>
+      <div className = 'input-group'>
       <input
         type="text"
         placeholder="Enter Home Team"
@@ -36,20 +39,20 @@ function App() {
         value={awayTeam}
         onChange={e => setAwayTeam(e.target.value)}
       />
+      </div>
       <button onClick={handleGeneratePassMap}>Generate Pass Maps</button>
-      
+      <div className = 'image-container'>
       {homeTeamImage && (
         <div>
-          <h2>Home Team Pass Map</h2>
           <img src={`data:image/png;base64,${homeTeamImage}`} alt="Home Team Pass Map" />
         </div>
       )}
       {awayTeamImage && (
         <div>
-          <h2>Away Team Pass Map</h2>
           <img src={`data:image/png;base64,${awayTeamImage}`} alt="Away Team Pass Map" />
         </div>
       )}
+      </div>
     </div>
   );
 }
