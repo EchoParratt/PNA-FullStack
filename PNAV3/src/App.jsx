@@ -39,7 +39,7 @@ function App() {
         value={awayTeam}
         onChange={e => setAwayTeam(e.target.value)}
       />
-      </div>
+        </div>
       <button onClick={handleGeneratePassMap}>Generate Pass Maps</button>
       <div className = 'image-container'>
       {homeTeamImage && (

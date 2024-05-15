@@ -11,6 +11,8 @@ from mplsoccer.pitch import Pitch
 from statsbombpy import sb
 from flask import Flask
 from flask_cors import CORS
+plt.rcParams["font.family"] = 'Roboto Mono'
+
 
 app = Flask(__name__)
 # Allow all domains/origins
@@ -219,11 +221,11 @@ def generate_pass_network(match_id, home_team, away_team):
 
 
     #Home
-    pitch = pitch = Pitch(pitch_color = 'grass', line_color = 'white', stripe = True,
-                        goal_type = 'box', label = False,
+    pitch = pitch = Pitch(pitch_type='statsbomb', pitch_color='#242424', line_color='white',
                       axis = True, tick = False)
     fig1, ax = pitch.draw()
-    arrows = pitch.arrows(pass_1.pass_maker_x, pass_1.pass_maker_y,
+    fig1.set_facecolor("#242424")
+    arrows = pitch.lines(pass_1.pass_maker_x, pass_1.pass_maker_y,
                       pass_1.pass_receiver_x, pass_1.pass_receiver_y, lw = 5,
                       color = 'white', zorder = 1, ax = ax)
     nodes = pitch.scatter(average_loc_1.pass_maker_x, average_loc_1.pass_maker_y,
@@ -233,24 +235,26 @@ def generate_pass_network(match_id, home_team, away_team):
         jersey_number = players_1.get(row.name, 'Not found')
         pitch.annotate(jersey_number, xy=(row.pass_maker_x, row.pass_maker_y),
             c = 'white', va = 'center', ha = 'center', size = 10, ax = ax)
-    plt.title(home_team, size = 20)
+    plt.title(home_team, size = 20, color='white')
     
 
     #Away
-    pitch = pitch = Pitch(pitch_color = 'grass', line_color = 'white', stripe = True,
-                        goal_type = 'box', label = False,
+    pitch = pitch = Pitch(pitch_type='statsbomb', pitch_color='#242424', line_color='white',
                       axis = True, tick = False)
     fig2, ax = pitch.draw()
-    arrows = pitch.arrows(120 -pass_2.pass_maker_x, pass_2.pass_maker_y,
-                      120 -pass_2.pass_receiver_x, pass_2.pass_receiver_y, lw = 5,
+    fig2.set_facecolor("#242424")
+    arrows = pitch.lines(120 - pass_2.pass_maker_x, pass_2.pass_maker_y,
+                      120 - pass_2.pass_receiver_x, pass_2.pass_receiver_y, lw = 5,
                       color = 'white', zorder = 1, ax = ax)
-    nodes = pitch.scatter(120 -average_loc_2.pass_maker_x, average_loc_2.pass_maker_y,
-                      s = 350, color = '#CBC3E3', edgecolor = 'white', linewidth = 1, alpha = 1, ax = ax)
+    nodes = pitch.scatter(120 - average_loc_2.pass_maker_x, average_loc_2.pass_maker_y,
+                      s = 350, color = '#87CEFA', edgecolor = 'white', linewidth = 1, alpha = 1, ax = ax)
 
     for index, row in average_loc_2.iterrows():
         jersey_number = players_2.get(row.name, 'Not found')
-        pitch.annotate(jersey_number, xy=(120 - row.pass_maker_x, row.pass_maker_y),
+        pitch.annotate(jersey_number, xy=(120 -row.pass_maker_x,row.pass_maker_y),
             c = 'white', va = 'center', ha = 'center', size = 10, ax = ax)
+    plt.title(away_team, size = 20, color='white')
+   
     plt.title(away_team, size = 20)
     return fig1, fig2 
 

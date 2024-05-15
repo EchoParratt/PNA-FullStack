@@ -11,7 +11,6 @@ h1 {
 
 input{
   font-family: 'Roboto Mono', monospace;
-  padding-left: 30px;
 }
 
 #root button {
@@ -44,6 +43,7 @@ input{
 
 .input-group {
   margin-bottom: 20px;
+  
 }
 
 @keyframes logo-spin {
